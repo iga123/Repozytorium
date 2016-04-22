@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <conio.h>
+main()
+{
+        int x,y;
+        printf("\n Wczytaj cyfre: ");
+        scanf("%d",&x);
+        if(x%2==0)
+                if(x>0)
+                        printf("\n Liczba %d jest parzysta liczba dodatnia.",x);
+                else
+                        printf("\n Liczba %d jest parzysta liczba ujemna.",x);
+        else
+                if(x>0)
+                        printf("\n Liczba %d jest nieparzysta liczba dodatnia.",x);
+                else
+                        printf("\n Liczba %d jest nieparzysta liczba ujemna.",x);
+        getch();
+        return 0;

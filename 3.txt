@@ -1,0 +1,35 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define ROZMIAR 100
+
+int DeleteLastChar(char **pstr)
+{
+char *tmp;
+int dlugosc,i;
+for(i=0;(*pstr)[i]!='\0';i++);
+dlugosc=i;
+tmp=(char*)malloc((dlugosc-1)*sizeof(*tmp));
+if(tmp==NULL)
+return NULL;
+for(dlugosc=0;dlugosc<(i-1);dlugosc++)
+tmp[dlugosc]=(*pstr)[dlugosc];
+tmp[dlugosc-1]='\0';
+free(*pstr);
+*pstr=tmp;
+return (dlugosc-1);
+}
+int main(void)
+{
+char *napis;
+int dlugosc,i;
+napis=(char*)malloc(ROZMIAR*sizeof(*napis));
+printf("Wprowadz napis:\n");
+fgets(napis,ROZMIAR,stdin);
+dlugosc=DeleteLastChar(&napis);
+if(dlugosc==NULL)
+return NULL;
+for(i=0;i<dlugosc;i++)
+printf("%c",napis[i]);
+free(napis);
+return 0;
+}

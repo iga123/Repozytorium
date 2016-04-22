@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define ROZMIAR 10
+
+void add(int** tab, int n, int new_elem)
+{
+int *tmp,i;
+tmp=(int*)malloc((n+1)*sizeof(*tmp));
+if(tmp==NULL)
+return;
+  for(i=0;i<n;i++)
+      tmp[i]=(*tab)[i];    
+ 
+ tmp[n]=new_elem;
+ 
+ free(*tab);
+ *tab=tmp;
+ return;
+
+
+}
+
+int main(void){
+
+    int new_elem,i,*nowatab=NULL;
+    for(i=0;i<ROZMIAR;i++)
+    {
+    printf("%2d. ", i+1);
+    scanf("%d", &new_elem);
+    add(&nowatab,i,new_elem);
+    }
+    if(nowatab!= NULL)
+        for(i=0; i<ROZMIAR; i++)
+            printf("%d ",nowatab[i]);
+    free(nowatab);
+    nowatab = NULL;
+    return 0;
+}

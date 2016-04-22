@@ -1,0 +1,115 @@
+#include<stdio.h>
+#include<math.h>
+
+struct zespolone
+{
+float re;
+float im;
+};
+
+void wypisz_zesp(struct zespolone z);
+struct zespolone zespLiczba(char);
+struct zespolone dodawanie(void);
+struct zespolone odejmowanie(void);
+struct zespolone mnozenie(void);
+struct zespolone dzielenie(void);
+struct zespolone modul(void);
+struct zespolone sprzezenie(void);
+
+
+
+int main(void){
+  char znak;
+  struct zespolone a,b, zespoloneLiczba;
+  printf("\nKalkulator liczb zespolonych.\n\n");
+  printf("Wprowadz znak operacji,ktora chcesz przeprowadzic:\n'+'-dodawanie,\n'-'-odejmowanie,\n'*'-mnozenie,\n'/'-dzielenie,\n'm'-modul,\n'c'-sprzezenie\n\nznak=");
+  scanf("%c",&znak);
+ 
+  switch(znak){
+    case '+' : zespoloneLiczba=dodawanie();
+      break;
+    case '-': zespoloneLiczba=odejmowanie();
+      break;
+    case '*': zespoloneLiczba=mnozenie();
+      break;
+    case '/': zespoloneLiczba=dzielenie();
+      break;
+    case 'm': zespoloneLiczba=modul();
+      break;
+    case 'c': zespoloneLiczba=sprzezenie();
+      break;
+    default:
+      printf("Wpisany znak jest niepoprawny.");
+      return -1;
+  }
+ 
+  wypisz_zesp(zespoloneLiczba);
+  return 0;
+}
+
+void wypisz_zesp(struct zespolone z) {
+printf("%.2f %+.2fi \n", z.re, z.im);
+}
+ 
+struct zespolone zespLiczba(char liczba){
+  struct zespolone zmienna;
+  printf("Wprowad? liczbe %c:\n Re(%c)= ",liczba,liczba);
+  scanf("%f",&(zmienna.re));
+  printf("Im(%c)= ",liczba);
+  scanf("%f",&(zmienna.im));
+  return zmienna;
+}
+
+struct zespolone dodawanie(void){
+  struct zespolone wynik;
+  struct zespolone a=zespLiczba('a');
+  struct zespolone b=zespLiczba('b');
+  wynik.re= a.re + b.re;
+  wynik.im= a.im + b.im;
+  return wynik;
+}
+ 
+ struct zespolone odejmowanie(void){
+  struct zespolone wynik;
+  struct zespolone a=zespLiczba('a');
+  struct zespolone b=zespLiczba('b');
+  wynik.re= a.re - b.re;
+  wynik.im= a.im - b.im;
+  return wynik;
+}
+
+struct zespolone mnozenie(void){
+    struct zespolone wynik;
+    struct zespolone a = zespLiczba('a');
+    struct zespolone b = zespLiczba('b');
+    wynik.re = a.re * b.re - a.im * b.im;
+    wynik.im = a.re * b.im + a.im * b.re;
+    return wynik;
+}
+
+struct zespolone dzielenie(void){
+    struct zespolone wynik;
+    struct zespolone a = zespLiczba('a');
+    struct zespolone b = zespLiczba('b');
+    wynik.re = (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im);
+    wynik.im = (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im);
+    return wynik;
+}
+
+struct zespolone modul(void){
+    struct zespolone wynik;
+    struct zespolone a = zespLiczba('a');
+    wynik.re = sqrt(a.re * a.re + a.im * a.im);
+    wynik.im = 0;
+    return wynik;
+}
+
+struct zespolone sprzezenie(void){
+    struct zespolone wynik;
+    struct zespolone a = zespLiczba('a');
+    wynik.re = a.re;
+    wynik.im = -a.im;
+    return wynik;
+}
+
+ 

@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int* tablica(int);
+
+int main(void){
+    int i,n,*tab;
+    printf("Podaj rozmiar swojej tablicy:\n");
+    scanf("%d",&n);
+    if(n<1){
+        printf("Podany rozmiar musi byc rowny conajmniej 1!");
+        return -1;
+    }
+    tab=tablica(n);
+    for(i=0;i<n;i++)
+        printf("%d ",tab[i]);
+    free(tab);
+    tab=NULL;
+    return 0;
+}
+
+int* tablica(int n){
+    int i,*tab;
+    tab=(int*)malloc(n*sizeof(*tab));
+    if(tab==NULL)
+        return NULL;
+    for(i=0;i<n;i++)
+        tab[i]=2*i+1;
+    return tab;
+}
