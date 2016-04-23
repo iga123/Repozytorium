@@ -2,7 +2,7 @@
 #include<stdlib.h>
 **********************************
 int* tablica(int);
-
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 int main(void){
     int i,n,*tab;
     printf("Podaj rozmiar swojej tablicy:\n");
