@@ -1,4 +1,4 @@
-#include<stdio.h>
+11111111#include<stdio.h>
 #include<stdlib.h>
 
 int* tablica(int);
