@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #define ROZMIAR 10
-
+11111111
 void add(int** tab, int n, int new_elem)
 {
 int *tmp,i;
