@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <conio.h>
-main()
+main()111111
 {
         float minimum(float [],int );
         float maksimum(float [],int );
